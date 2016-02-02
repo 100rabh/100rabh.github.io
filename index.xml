@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>आरम्भ</title>
-    <link>http://localhost:1313/</link>
+    <link>http://100rabh.github.io/</link>
     <description>Recent content on आरम्भ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Oct 2015 13:07:31 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://100rabh.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Migrate from Jekyll</title>
-      <link>http://localhost:1313/2015/10/10/migrate-from-jekyll</link>
+      <link>http://100rabh.github.io/2015/10/10/migrate-from-jekyll</link>
       <pubDate>Sat, 10 Oct 2015 13:07:31 +0200</pubDate>
       
-      <guid>http://localhost:1313/2015/10/10/migrate-from-jekyll</guid>
+      <guid>http://100rabh.github.io/2015/10/10/migrate-from-jekyll</guid>
       <description>
 
 &lt;h2 id=&#34;move-static-content-to-static:964c172ef5e837f03573891408d8d631&#34;&gt;Move static content to &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
@@ -39,7 +39,7 @@ With Jekyll, something that looked like&lt;/p&gt;
 
 &lt;h2 id=&#34;create-your-hugo-configuration-file:964c172ef5e837f03573891408d8d631&#34;&gt;Create your Hugo configuration file&lt;/h2&gt;
 
-&lt;p&gt;Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the &lt;a href=&#34;http://localhost:1313/overview/configuration/&#34;&gt;Hugo configuration documentation&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the &lt;a href=&#34;http://100rabh.github.io/overview/configuration/&#34;&gt;Hugo configuration documentation&lt;/a&gt; for details.&lt;/p&gt;
 
 &lt;h2 id=&#34;set-your-configuration-publish-folder-to-site:964c172ef5e837f03573891408d8d631&#34;&gt;Set your configuration publish folder to &lt;code&gt;_site&lt;/code&gt;&lt;/h2&gt;
 
@@ -65,13 +65,13 @@ git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
 
 &lt;h2 id=&#34;convert-jekyll-templates-to-hugo-templates:964c172ef5e837f03573891408d8d631&#34;&gt;Convert Jekyll templates to Hugo templates&lt;/h2&gt;
 
-&lt;p&gt;That&amp;rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to &lt;a href=&#34;http://jekyllrb.com/docs/templates/&#34;&gt;Jekyll&amp;rsquo;s template documentation&lt;/a&gt; if you need to refresh your memory on how you built your blog and &lt;a href=&#34;http://localhost:1313/layout/templates/&#34;&gt;Hugo&amp;rsquo;s template&lt;/a&gt; to learn Hugo&amp;rsquo;s way.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to &lt;a href=&#34;http://jekyllrb.com/docs/templates/&#34;&gt;Jekyll&amp;rsquo;s template documentation&lt;/a&gt; if you need to refresh your memory on how you built your blog and &lt;a href=&#34;http://100rabh.github.io/layout/templates/&#34;&gt;Hugo&amp;rsquo;s template&lt;/a&gt; to learn Hugo&amp;rsquo;s way.&lt;/p&gt;
 
 &lt;p&gt;As a single reference data point, converting my templates for &lt;a href=&#34;http://heyitsalex.net/&#34;&gt;heyitsalex.net&lt;/a&gt; took me no more than a few hours.&lt;/p&gt;
 
 &lt;h2 id=&#34;convert-jekyll-plugins-to-hugo-shortcodes:964c172ef5e837f03573891408d8d631&#34;&gt;Convert Jekyll plugins to Hugo shortcodes&lt;/h2&gt;
 
-&lt;p&gt;Jekyll has &lt;a href=&#34;http://jekyllrb.com/docs/plugins/&#34;&gt;plugins&lt;/a&gt;; Hugo has &lt;a href=&#34;http://localhost:1313/doc/shortcodes/&#34;&gt;shortcodes&lt;/a&gt;. It&amp;rsquo;s fairly trivial to do a port.&lt;/p&gt;
+&lt;p&gt;Jekyll has &lt;a href=&#34;http://jekyllrb.com/docs/plugins/&#34;&gt;plugins&lt;/a&gt;; Hugo has &lt;a href=&#34;http://100rabh.github.io/doc/shortcodes/&#34;&gt;shortcodes&lt;/a&gt;. It&amp;rsquo;s fairly trivial to do a port.&lt;/p&gt;
 
 &lt;h3 id=&#34;implementation:964c172ef5e837f03573891408d8d631&#34;&gt;Implementation&lt;/h3&gt;
 
@@ -188,10 +188,10 @@ Liquid::Template.register_tag(&#39;image&#39;, Jekyll::ImageTag)
     
     <item>
       <title>Linked post</title>
-      <link>http://localhost:1313/2015/10/02/linked-post</link>
+      <link>http://100rabh.github.io/2015/10/02/linked-post</link>
       <pubDate>Fri, 02 Oct 2015 21:49:20 +0200</pubDate>
       
-      <guid>http://localhost:1313/2015/10/02/linked-post</guid>
+      <guid>http://100rabh.github.io/2015/10/02/linked-post</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a linked post in the menu. You can add other posts by adding the following line to the frontmatter:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;menu = &amp;quot;main&amp;quot;
@@ -207,10 +207,10 @@ Liquid::Template.register_tag(&#39;image&#39;, Jekyll::ImageTag)
     
     <item>
       <title>Go is for lovers</title>
-      <link>http://localhost:1313/2015/09/17/go-is-for-lovers</link>
+      <link>http://100rabh.github.io/2015/09/17/go-is-for-lovers</link>
       <pubDate>Thu, 17 Sep 2015 13:47:08 +0200</pubDate>
       
-      <guid>http://localhost:1313/2015/09/17/go-is-for-lovers</guid>
+      <guid>http://100rabh.github.io/2015/09/17/go-is-for-lovers</guid>
       <description>
 
 &lt;p&gt;Hugo uses the excellent &lt;a href=&#34;http://golang.org/&amp;gt;&#34;&gt;go&lt;/a&gt; &lt;a href=&#34;http://golang.org/pkg/html/template/&amp;gt;&#34;&gt;html/template&lt;/a&gt; library for
@@ -269,7 +269,7 @@ functions.&lt;/p&gt;
 &lt;p&gt;Each go template has a struct (object) made available to it. In hugo each
 template is passed either a page or a node struct depending on which type of
 page you are rendering. More details are available on the
-&lt;a href=&#34;http://localhost:1313/layout/variables&#34;&gt;variables&lt;/a&gt; page.&lt;/p&gt;
+&lt;a href=&#34;http://100rabh.github.io/layout/variables&#34;&gt;variables&lt;/a&gt; page.&lt;/p&gt;
 
 &lt;p&gt;A variable is accessed by referencing the variable name.&lt;/p&gt;
 
@@ -286,7 +286,7 @@ page you are rendering. More details are available on the
 
 &lt;p&gt;Go template ship with a few functions which provide basic functionality. The go
 template system also provides a mechanism for applications to extend the
-available functions with their own. &lt;a href=&#34;http://localhost:1313/layout/functions&#34;&gt;Hugo template
+available functions with their own. &lt;a href=&#34;http://100rabh.github.io/layout/functions&#34;&gt;Hugo template
 functions&lt;/a&gt; provide some additional functionality we believe
 are useful for building websites. Functions are called by using their name
 followed by the required parameters separated by spaces. Template
@@ -474,7 +474,7 @@ you want to inside of your templates.&lt;/p&gt;
 &lt;h2 id=&#34;using-content-page-parameters:08cfabf6312c9fe10477f4bc9e27bdd5&#34;&gt;Using Content (page) Parameters&lt;/h2&gt;
 
 &lt;p&gt;In each piece of content you can provide variables to be used by the
-templates. This happens in the &lt;a href=&#34;http://localhost:1313/content/front-matter&#34;&gt;front matter&lt;/a&gt;.&lt;/p&gt;
+templates. This happens in the &lt;a href=&#34;http://100rabh.github.io/content/front-matter&#34;&gt;front matter&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;An example of this is used in this documentation site. Most of the pages
 benefit from having the table of contents provided. Sometimes the TOC just
@@ -553,10 +553,10 @@ so, such as in this example:&lt;/p&gt;
     
     <item>
       <title>Hugo is for lovers</title>
-      <link>http://localhost:1313/2015/08/03/hugo-is-for-lovers</link>
+      <link>http://100rabh.github.io/2015/08/03/hugo-is-for-lovers</link>
       <pubDate>Mon, 03 Aug 2015 13:39:46 +0200</pubDate>
       
-      <guid>http://localhost:1313/2015/08/03/hugo-is-for-lovers</guid>
+      <guid>http://100rabh.github.io/2015/08/03/hugo-is-for-lovers</guid>
       <description>
 
 &lt;h2 id=&#34;step-1-install-hugo:88aac7a07addfbee771d05b85cb8c827&#34;&gt;Step 1. Install Hugo&lt;/h2&gt;
@@ -566,7 +566,7 @@ appropriate version for your os and architecture.&lt;/p&gt;
 
 &lt;p&gt;Save it somewhere specific as we will be using it in the next step.&lt;/p&gt;
 
-&lt;p&gt;More complete instructions are available at &lt;a href=&#34;http://localhost:1313/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More complete instructions are available at &lt;a href=&#34;http://100rabh.github.io/overview/installing/&#34;&gt;installing hugo&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;step-2-build-the-docs:88aac7a07addfbee771d05b85cb8c827&#34;&gt;Step 2. Build the Docs&lt;/h2&gt;
 
@@ -579,7 +579,7 @@ you are reading right now.&lt;/p&gt;
 &lt;li&gt;Clone the &lt;a href=&#34;http://github.com/spf13/hugo&#34;&gt;hugo repository&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Go into the repo&lt;/li&gt;
 &lt;li&gt;Run hugo in server mode and build the docs&lt;/li&gt;
-&lt;li&gt;Open your browser to &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Open your browser to &lt;a href=&#34;http://100rabh.github.io&#34;&gt;http://100rabh.github.io&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Corresponding pseudo commands:&lt;/p&gt;
@@ -590,7 +590,7 @@ cd hugo
 &amp;gt; 29 pages created
 &amp;gt; 0 tags index created
 &amp;gt; in 27 ms
-&amp;gt; Web Server is available at http://localhost:1313
+&amp;gt; Web Server is available at http://100rabh.github.io
 &amp;gt; Press ctrl+c to stop
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -606,7 +606,7 @@ cd hugo
 &amp;gt; 29 pages created
 &amp;gt; 0 tags index created
 &amp;gt; in 27 ms
-&amp;gt; Web Server is available at http://localhost:1313
+&amp;gt; Web Server is available at http://100rabh.github.io
 &amp;gt; Watching for changes in /Users/spf13/Code/hugo/docs/content
 &amp;gt; Press ctrl+c to stop
 &lt;/code&gt;&lt;/pre&gt;
@@ -640,10 +640,10 @@ Having nearly instant feedback enables you to have your creativity flow without 
     
     <item>
       <title>Creating a new theme</title>
-      <link>http://localhost:1313/2015/06/24/creating-a-new-theme</link>
+      <link>http://100rabh.github.io/2015/06/24/creating-a-new-theme</link>
       <pubDate>Wed, 24 Jun 2015 13:50:46 +0200</pubDate>
       
-      <guid>http://localhost:1313/2015/06/24/creating-a-new-theme</guid>
+      <guid>http://100rabh.github.io/2015/06/24/creating-a-new-theme</guid>
       <description>
 
 &lt;h2 id=&#34;introduction:203afb8fdc074e80a6a8cddc7dc8ce70&#34;&gt;Introduction&lt;/h2&gt;
@@ -831,7 +831,7 @@ WARN: 2014/09/29 Unable to locate layout: [404.html]
 0 categories created
 in 2 ms
 Serving pages from /Users/quoha/Sites/zafta/public
-Web Server is available at http://localhost:1313
+Web Server is available at http://100rabh.github.io
 Press Ctrl+C to stop
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1074,7 +1074,7 @@ WARN: 2014/09/29 Unable to locate layout: [404.html theme/404.html]
 in 2 ms
 Watching for changes in /Users/quoha/Sites/zafta/content
 Serving pages from /Users/quoha/Sites/zafta/public
-Web Server is available at http://localhost:1313
+Web Server is available at http://100rabh.github.io
 Press Ctrl+C to stop
 INFO: 2014/09/29 File System Event: [&amp;quot;/Users/quoha/Sites/zafta/themes/zafta/layouts/index.html&amp;quot;: MODIFY|ATTRIB]
 Change detected, rebuilding site
@@ -1151,7 +1151,7 @@ $ cat public/index.html
 &amp;lt;body&amp;gt;
   &amp;lt;p&amp;gt;hugo says hello!&amp;lt;/p&amp;gt;
 &amp;lt;script&amp;gt;document.write(&#39;&amp;lt;script src=&amp;quot;http://&#39;
-        + (location.host || &#39;localhost&#39;).split(&#39;:&#39;)[0]
+        + (location.host || &#39;100rabh.github.io&#39;).split(&#39;:&#39;)[0]
     + &#39;:1313/livereload.js?mindelay=10&amp;quot;&amp;gt;&amp;lt;/&#39;
         + &#39;script&amp;gt;&#39;)&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
@@ -1434,7 +1434,7 @@ $ cat public/post/second/index.html
 $
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Notice that the posts now have content. You can go to localhost:1313/post/first to verify.&lt;/p&gt;
+&lt;p&gt;Notice that the posts now have content. You can go to 100rabh.github.io/post/first to verify.&lt;/p&gt;
 
 &lt;h3 id=&#34;linking-to-content:203afb8fdc074e80a6a8cddc7dc8ce70&#34;&gt;Linking to Content&lt;/h3&gt;
 
@@ -1538,12 +1538,12 @@ i&#39;m speechless
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/post/theme/&amp;quot;&amp;gt;creating a new theme&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/about-time/&amp;quot;&amp;gt;about&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/post/second-post/&amp;quot;&amp;gt;second&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/post/first-post/&amp;quot;&amp;gt;first&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/post/theme/&amp;quot;&amp;gt;creating a new theme&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/about-time/&amp;quot;&amp;gt;about&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/post/second-post/&amp;quot;&amp;gt;second&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/post/first-post/&amp;quot;&amp;gt;first&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
 &amp;lt;script&amp;gt;document.write(&#39;&amp;lt;script src=&amp;quot;http://&#39;
-        + (location.host || &#39;localhost&#39;).split(&#39;:&#39;)[0]
+        + (location.host || &#39;100rabh.github.io&#39;).split(&#39;:&#39;)[0]
         + &#39;:1313/livereload.js?mindelay=10&amp;quot;&amp;gt;&amp;lt;/&#39;
         + &#39;script&amp;gt;&#39;)&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
@@ -1742,10 +1742,10 @@ $ vi themes/zafta/layouts/_default/single.html
     
     <item>
       <title>भोर की खोज में Kaza, Key Monastery, Kibber</title>
-      <link>http://localhost:1313/2014/10/18/%E0%A4%AD%E0%A5%8B%E0%A4%B0-%E0%A4%95%E0%A5%80-%E0%A4%96%E0%A5%8B%E0%A4%9C-%E0%A4%AE%E0%A5%87%E0%A4%82-kaza-key-monastery-kibber</link>
+      <link>http://100rabh.github.io/2014/10/18/%E0%A4%AD%E0%A5%8B%E0%A4%B0-%E0%A4%95%E0%A5%80-%E0%A4%96%E0%A5%8B%E0%A4%9C-%E0%A4%AE%E0%A5%87%E0%A4%82-kaza-key-monastery-kibber</link>
       <pubDate>Sat, 18 Oct 2014 16:56:43 +0200</pubDate>
       
-      <guid>http://localhost:1313/2014/10/18/%E0%A4%AD%E0%A5%8B%E0%A4%B0-%E0%A4%95%E0%A5%80-%E0%A4%96%E0%A5%8B%E0%A4%9C-%E0%A4%AE%E0%A5%87%E0%A4%82-kaza-key-monastery-kibber</guid>
+      <guid>http://100rabh.github.io/2014/10/18/%E0%A4%AD%E0%A5%8B%E0%A4%B0-%E0%A4%95%E0%A5%80-%E0%A4%96%E0%A5%8B%E0%A4%9C-%E0%A4%AE%E0%A5%87%E0%A4%82-kaza-key-monastery-kibber</guid>
       <description>
 
 &lt;p&gt;कई रातें हैं य़ू गुजरी.. कि नींदों को सिरहाना मेरा ढूंढने में वक़्त लगता है ,
@@ -1872,16 +1872,16 @@ menu = &amp;quot;main&amp;quot;
 &lt;div class=&#34;article-gallery&#34;&gt;
     &lt;div class=&#34;article-gallery-photos&#34;&gt;
         
-        &lt;a class=&#34;article-gallery-img fancybox&#34; href=&#34;http://localhost:1313/banners/placeholder.png&#34; rel=&#34;group1&#34;&gt;
-            &lt;img src=&#34;http://localhost:1313/banners/placeholder.png&#34; itemprop=&#34;image&#34;&gt;
+        &lt;a class=&#34;article-gallery-img fancybox&#34; href=&#34;http://100rabh.github.io/banners/placeholder.png&#34; rel=&#34;group1&#34;&gt;
+            &lt;img src=&#34;http://100rabh.github.io/banners/placeholder.png&#34; itemprop=&#34;image&#34;&gt;
         &lt;/a&gt;
         
-        &lt;a class=&#34;article-gallery-img fancybox&#34; href=&#34;http://localhost:1313/banners/placeholder.png&#34; rel=&#34;group1&#34;&gt;
-            &lt;img src=&#34;http://localhost:1313/banners/placeholder.png&#34; itemprop=&#34;image&#34;&gt;
+        &lt;a class=&#34;article-gallery-img fancybox&#34; href=&#34;http://100rabh.github.io/banners/placeholder.png&#34; rel=&#34;group1&#34;&gt;
+            &lt;img src=&#34;http://100rabh.github.io/banners/placeholder.png&#34; itemprop=&#34;image&#34;&gt;
         &lt;/a&gt;
         
-        &lt;a class=&#34;article-gallery-img fancybox&#34; href=&#34;http://localhost:1313/banners/placeholder.png&#34; rel=&#34;group1&#34;&gt;
-            &lt;img src=&#34;http://localhost:1313/banners/placeholder.png&#34; itemprop=&#34;image&#34;&gt;
+        &lt;a class=&#34;article-gallery-img fancybox&#34; href=&#34;http://100rabh.github.io/banners/placeholder.png&#34; rel=&#34;group1&#34;&gt;
+            &lt;img src=&#34;http://100rabh.github.io/banners/placeholder.png&#34; itemprop=&#34;image&#34;&gt;
         &lt;/a&gt;
         
     &lt;/div&gt;
@@ -1925,7 +1925,7 @@ menu = &amp;quot;main&amp;quot;
 &lt;pre&gt;&lt;code&gt;$ hugo server
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now enter &lt;a href=&#34;http://localhost:1313&#34;&gt;&lt;code&gt;localhost:1313&lt;/code&gt;&lt;/a&gt; in the address bar of your browser.&lt;/p&gt;
+&lt;p&gt;Now enter &lt;a href=&#34;http://100rabh.github.io&#34;&gt;&lt;code&gt;100rabh.github.io&lt;/code&gt;&lt;/a&gt; in the address bar of your browser.&lt;/p&gt;
 
 &lt;h2 id=&#34;contributing:33ea911532f0c95309659f2412cd62cb&#34;&gt;Contributing&lt;/h2&gt;
 

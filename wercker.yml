@@ -7,9 +7,9 @@ build:
 
 deploy:
   steps:
-    - install-packages:
-        packages: git ssh-client
-    - lukevivier/gh-pages@0.2.1:
-        token: $GIT_TOKEN
-        domain: saurabh
+    - leipert/git-push:
+        gh_oauth: $MY_T
         basedir: public
+        clean_removed_files: true
+        branch: master
+        repo: 100rabh/100rabh.github.io

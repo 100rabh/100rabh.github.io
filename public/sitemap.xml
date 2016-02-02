@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2015-10-10T13:07:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/2015/10/10/migrate-from-jekyll</loc>
+    <lastmod>2015-10-10T13:07:31+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/2015/10/02/linked-post</loc>
+    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/2015/09/17/go-is-for-lovers</loc>
+    <lastmod>2015-09-17T13:47:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/2015/08/03/hugo-is-for-lovers</loc>
+    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/2015/06/24/creating-a-new-theme</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/2014/10/18/%E0%A4%AD%E0%A5%8B%E0%A4%B0-%E0%A4%95%E0%A5%80-%E0%A4%96%E0%A5%8B%E0%A4%9C-%E0%A4%AE%E0%A5%87%E0%A4%82-kaza-key-monastery-kibber</loc>
+    <lastmod>2014-10-18T16:56:43+02:00</lastmod>
+  </url>
+  
+</urlset>

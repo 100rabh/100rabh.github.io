@@ -6,7 +6,7 @@ disqusShortname = ""
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 # Define the number of posts per site
-paginate = 8
+paginate = 10
 footnotereturnlinkcontents = "↩"
 
 contentdir = "content"

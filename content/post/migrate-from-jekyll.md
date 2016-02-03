@@ -4,7 +4,7 @@ date = "2015-02-02T13:07:31+02:00"
 tags = ["Github Pages", "Hugo", "Blog", "wercker"]
 categories = ["Tutorials"]
 menu = ""
-banner = "banners/GitHugoWercker.png"
+banner = "banners/githugo.png"
 +++
 
 ## What's up with `HUGO`
@@ -54,3 +54,4 @@ creating site with hugo we don't  nedd to commit this. So use .gitignore file to
 So at last we have a repo in git with two branches one master containing `/public` folder contents and other branch(suppose source) containing source contents of hugo site. Now we just have to automated the things so that we don't have to commit to the both branch each time we made a change to our site.
 
 ## Automation with `wercker`
+

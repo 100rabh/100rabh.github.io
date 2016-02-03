@@ -1,154 +1,56 @@
 +++
-title = "Migrate from Jekyll"
-date = "2015-10-10T13:07:31+02:00"
-tags = ["ipsum"]
-categories = ["lorem"]
+title = "How to host a static website/blog with Hugo, Github Pages and Wercker"
+date = "2015-02-02T13:07:31+02:00"
+tags = ["Github Pages", "Hugo", "Blog", "wercker"]
+categories = ["Tutorials"]
 menu = ""
-banner = "banners/placeholder.png"
+banner = "banners/GitHugoWercker.png"
 +++
 
-## Move static content to `static`
-Jekyll has a rule that any directory not starting with `_` will be copied as-is to the `_site` output. Hugo keeps all static content under `static`. You should therefore move it all there.
-With Jekyll, something that looked like
+## What's up with `HUGO`
+Hugo is a static site generator. Sites generated with Hugo tends to be [fast](https://youtu.be/CdiDYZ51a2o), easy to host on different providers like AWS, GitHub Pages, Google Cloud etc. Visit official Hugo wesite for [more](https://gohugo.io/overview/introduction/).
 
-    ▾ <root>/
-        ▾ images/
-            logo.png
+## Create a static site with Hugo
+First of all you need to have hugo installed in your working Env. Basically you may want to refer [Hugo Installation documentation](https://gohugo.io/overview/installing/) for details. Which is pretty much straightforward.
+After that follow these commands to create site with hugo:
 
-should become
+      $ hugo new site path/to/site
+      $ cd path/to/site
+The new site will have the following structure:
 
-    ▾ <root>/
-        ▾ static/
-            ▾ images/
-                logo.png
+      ▸ archetypes/
+      ▸ content/
+      ▸ data/
+      ▸ layouts/
+      ▸ static/
+      config.toml
 
-Additionally, you'll want any files that should reside at the root (such as `CNAME`) to be moved to `static`.
+Now you have static site without any theme. If you want to have one you are in the right place Hugo has rich [theme](https://gohugo.io/themes/overview/) support.
 
-## Create your Hugo configuration file
-Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the [Hugo configuration documentation](/overview/configuration/) for details.
+## Run your site with Hugo server
+       $ hugo server
+       OR If on windows use:
+       $ hugo server --renderToDisk
 
-## Set your configuration publish folder to `_site`
-The default is for Jekyll to publish to `_site` and for Hugo to publish to `public`. If, like me, you have [`_site` mapped to a git submodule on the `gh-pages` branch](http://blog.blindgaenger.net/generate_github_pages_in_a_submodule.html), you'll want to do one of two alternatives:
+On console you will see a message like: `Web Server is available at http://localhost:1313`.
+Go to the browser and verify the site.
+You can have many [options](http://gohugo.io/overview/quickstart/#step-7-have-fun), with hugo to build the site as you want. Just play around with those options untill you have the site you want.
 
-1. Change your submodule to point to map `gh-pages` to public instead of `_site` (recommended).
+## Setup 'git'
+Now that your site been setup locally as desired. You need to host it `live`. We will use [github pages](https://pages.github.com/) for that.
+There are two option we have here to host with github pages:
 
-        git submodule deinit _site
-        git rm _site
-        git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
+      1:  User or Organization site (served from `master` branch)
+      2:  Project site (served from `gh-pages` branch)
 
-2. Or, change the Hugo configuration to use `_site` instead of `public`.
+We are going with option 1 here. So just follow the inst. in github pages i.e. setup repo with name `username`.github.io.
+Here username should be your/org's github username.
+Create two branches one master whuch will have the public folder contents (from the site generated with hugo).
+Other you can name anything and this will actually hold the source contents which will be used by hugo to create site for.
 
-        {
-            ..
-            "publishdir": "_site",
-            ..
-        }
+Now if you have read the hugo docs(which you should), you know that there will be a /public folder created by hugo and this contains actual contents of your site which will be hosted by github (if placed in master branch of repo). But since We are 
+creating site with hugo we don't  nedd to commit this. So use .gitignore file to ignore /public folder.
 
-## Convert Jekyll templates to Hugo templates
-That's the bulk of the work right here. The documentation is your friend. You should refer to [Jekyll's template documentation](http://jekyllrb.com/docs/templates/) if you need to refresh your memory on how you built your blog and [Hugo's template](/layout/templates/) to learn Hugo's way.
+So at last we have a repo in git with two branches one master containing `/public` folder contents and other branch(suppose source) containing source contents of hugo site. Now we just have to automated the things so that we don't have to commit to the both branch each time we made a change to our site.
 
-As a single reference data point, converting my templates for [heyitsalex.net](http://heyitsalex.net/) took me no more than a few hours.
-
-## Convert Jekyll plugins to Hugo shortcodes
-Jekyll has [plugins](http://jekyllrb.com/docs/plugins/); Hugo has [shortcodes](/doc/shortcodes/). It's fairly trivial to do a port.
-
-### Implementation
-As an example, I was using a custom [`image_tag`](https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb) plugin to generate figures with caption when running Jekyll. As I read about shortcodes, I found Hugo had a nice built-in shortcode that does exactly the same thing.
-
-Jekyll's plugin:
-
-    module Jekyll
-      class ImageTag < Liquid::Tag
-        @url = nil
-        @caption = nil
-        @class = nil
-        @link = nil
-        // Patterns
-        IMAGE_URL_WITH_CLASS_AND_CAPTION =
-        IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK = /(\w+)(\s+)((https?:\/\/|\/)(\S+))(\s+)"(.*?)"(\s+)->((https?:\/\/|\/)(\S+))(\s*)/i
-        IMAGE_URL_WITH_CAPTION = /((https?:\/\/|\/)(\S+))(\s+)"(.*?)"/i
-        IMAGE_URL_WITH_CLASS = /(\w+)(\s+)((https?:\/\/|\/)(\S+))/i
-        IMAGE_URL = /((https?:\/\/|\/)(\S+))/i
-        def initialize(tag_name, markup, tokens)
-          super
-          if markup =~ IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK
-            @class   = $1
-            @url     = $3
-            @caption = $7
-            @link = $9
-          elsif markup =~ IMAGE_URL_WITH_CLASS_AND_CAPTION
-            @class   = $1
-            @url     = $3
-            @caption = $7
-          elsif markup =~ IMAGE_URL_WITH_CAPTION
-            @url     = $1
-            @caption = $5
-          elsif markup =~ IMAGE_URL_WITH_CLASS
-            @class = $1
-            @url   = $3
-          elsif markup =~ IMAGE_URL
-            @url = $1
-          end
-        end
-        def render(context)
-          if @class
-            source = "<figure class='#{@class}'>"
-          else
-            source = "<figure>"
-          end
-          if @link
-            source += "<a href=\"#{@link}\">"
-          end
-          source += "<img src=\"#{@url}\">"
-          if @link
-            source += "</a>"
-          end
-          source += "<figcaption>#{@caption}</figcaption>" if @caption
-          source += "</figure>"
-          source
-        end
-      end
-    end
-    Liquid::Template.register_tag('image', Jekyll::ImageTag)
-
-is written as this Hugo shortcode:
-
-    <!-- image -->
-    <figure {{ with .Get "class" }}class="{{.}}"{{ end }}>
-        {{ with .Get "link"}}<a href="{{.}}">{{ end }}
-            <img src="{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} />
-        {{ if .Get "link"}}</a>{{ end }}
-        {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
-        <figcaption>{{ if isset .Params "title" }}
-            {{ .Get "title" }}{{ end }}
-            {{ if or (.Get "caption") (.Get "attr")}}<p>
-            {{ .Get "caption" }}
-            {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
-                {{ .Get "attr" }}
-            {{ if .Get "attrlink"}}</a> {{ end }}
-            </p> {{ end }}
-        </figcaption>
-        {{ end }}
-    </figure>
-    <!-- image -->
-
-### Usage
-I simply changed:
-
-    {% image full http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg "One of my favorite touristy-type photos. I secretly waited for the good light while we were "having fun" and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing." ->http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/ %}
-
-to this (this example uses a slightly extended version named `fig`, different than the built-in `figure`):
-
-    {{%/* fig class="full" src="http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg" title="One of my favorite touristy-type photos. I secretly waited for the good light while we were having fun and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing." link="http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/" */%}}
-
-As a bonus, the shortcode named parameters are, arguably, more readable.
-
-## Finishing touches
-### Fix content
-Depending on the amount of customization that was done with each post with Jekyll, this step will require more or less effort. There are no hard and fast rules here except that `hugo server --watch` is your friend. Test your changes and fix errors as needed.
-
-### Clean up
-You'll want to remove the Jekyll configuration at this point. If you have anything else that isn't used, delete it.
-
-## A practical example in a diff
-[Hey, it's Alex](http://heyitsalex.net/) was migrated in less than a _father-with-kids day_ from Jekyll to Hugo. You can see all the changes (and screw-ups) by looking at this [diff](https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610).
+## Automation with `wercker`

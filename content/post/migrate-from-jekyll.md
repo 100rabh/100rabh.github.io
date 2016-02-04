@@ -43,15 +43,68 @@ There are two option we have here to host with github pages:
       1:  User or Organization site (served from `master` branch)
       2:  Project site (served from `gh-pages` branch)
 
-We are going with option 1 here. So just follow the inst. in github pages i.e. setup repo with name `username`.github.io.
+We are going with option 1 here. 
+So just follow the inst. in github pages i.e. setup repo with name <username>.github.io.
+
 Here username should be your/org's github username.
-Create two branches one master whuch will have the public folder contents (from the site generated with hugo).
+Create two branches one master which will have the public folder contents (from the site generated with hugo).
 Other you can name anything and this will actually hold the source contents which will be used by hugo to create site for.
 
 Now if you have read the hugo docs(which you should), you know that there will be a /public folder created by hugo and this contains actual contents of your site which will be hosted by github (if placed in master branch of repo). But since We are 
 creating site with hugo we don't  nedd to commit this. So use .gitignore file to ignore /public folder.
 
-So at last we have a repo in git with two branches one master containing `/public` folder contents and other branch(suppose source) containing source contents of hugo site. Now we just have to automated the things so that we don't have to commit to the both branch each time we made a change to our site.
+So at last we have a repo in git with two branches one master containing `/public` folder contents and other branch(suppose source) containing source contents of hugo site. 
+If all setup good, you will be able to see your site at http://<username>.github.io/
+Now we just have to automated the things so that we don't have to commit to the both branch each time we made a change to our site.
 
 ## Automation with `wercker`
+Up to now you have a site hosted from github pages. 
+Repo on github with branches master and source.
+To make any change in site you will be commiting changes to source branch (just to maintain your hugo source code).
+and changes of /public folder to master branch.
 
+Now we will automate this process using wercker. 
+But before that just push wercker.yml file with following code in `source` branch.
+      
+      box: debian
+      build:
+        steps:
+          - arjen/hugo-build:
+              version: "0.15"
+              flags: --buildDrafts=true
+
+      deploy:
+        steps:
+          - install-packages:
+              packages: git ssh-client
+          - leipert/git-push:
+              gh_oauth: $GIT_TOKEN
+              basedir: public
+              clean_removed_files: true
+              branch: master
+              repo: <Your github repo>
+
+No go to [wercker](http://wercker.com) and follow steps:
+
+      1: Create wercker account using github or else.
+      2: Select github repo (in this case <username>.github.io) 
+      3: Configure access (choose recommended)
+      4: Setup your wercker.yml (will be done automatically as we already have it in our repo branch)
+      5: You can OR can't make this wercker public
+      6: Build it it should be GREEN
+      7: Go to settings and for option `Ignored branches` add `master` branch.
+
+Now since wercker build step is GREEN, We will try to make it deploy to master branch:
+
+      1: Got to newly build wercker application -> settings (right top)
+      2: Add deploy target (choose custom deploy)
+      3: Git deploy target a nice name (offcource anything)
+      4: Select auto deploy and add branch name `source` (where your source code it in git repo)
+      5: Add a new variable `GIT_TOKEN` (as specified in wercker.yml file)
+      6: For the text value of `GIT_TOKEN`, You need to goto your github profile setting page.
+      7: Select Personal Access Tocken there and generate one (name it anything and copy the value)
+      8: Now goto wercker and paste it as `GIT_TOKEN` text value.
+      9: Save everything
+
+Now got to make some change to your local hugo site/repo and push those changes to source branch.
+You will see your wercker building your changes from source and pushing them to master so that you can see them LIVE !!

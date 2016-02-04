@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on आरम्भ</title>
+    <link>http://100rabh.github.io/tags/blog/</link>
+    <description>Recent content in Blog on आरम्भ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Feb 2015 13:07:31 +0200</lastBuildDate>
+    <atom:link href="http://100rabh.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to host a static website/blog with Hugo, Github Pages and Wercker</title>
+      <link>http://100rabh.github.io/2015/02/02/how-to-host-a-static-website/blog-with-hugo-github-pages-and-wercker</link>
+      <pubDate>Mon, 02 Feb 2015 13:07:31 +0200</pubDate>
+      
+      <guid>http://100rabh.github.io/2015/02/02/how-to-host-a-static-website/blog-with-hugo-github-pages-and-wercker</guid>
+      <description>
+
+&lt;h2 id=&#34;what-s-up-with-hugo:964c172ef5e837f03573891408d8d631&#34;&gt;What&amp;rsquo;s up with &lt;code&gt;HUGO&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Hugo is a static site generator. Sites generated with Hugo tends to be &lt;a href=&#34;https://youtu.be/CdiDYZ51a2o&#34;&gt;fast&lt;/a&gt;, easy to host on different providers like AWS, GitHub Pages, Google Cloud etc. Visit official Hugo wesite for &lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;more&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-a-static-site-with-hugo:964c172ef5e837f03573891408d8d631&#34;&gt;Create a static site with Hugo&lt;/h2&gt;
+
+&lt;p&gt;First of all you need to have hugo installed in your working Env. Basically you may want to refer &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;Hugo Installation documentation&lt;/a&gt; for details. Which is pretty much straightforward.
+After that follow these commands to create site with hugo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ hugo new site path/to/site
+  $ cd path/to/site
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The new site will have the following structure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  ▸ archetypes/
+  ▸ content/
+  ▸ data/
+  ▸ layouts/
+  ▸ static/
+  config.toml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you have static site without any theme. If you want to have one you are in the right place Hugo has rich &lt;a href=&#34;https://gohugo.io/themes/overview/&#34;&gt;theme&lt;/a&gt; support.&lt;/p&gt;
+
+&lt;h2 id=&#34;run-your-site-with-hugo-server:964c172ef5e837f03573891408d8d631&#34;&gt;Run your site with Hugo server&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;   $ hugo server
+   OR If on windows use:
+   $ hugo server --renderToDisk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;On console you will see a message like: &lt;code&gt;Web Server is available at http://localhost:1313&lt;/code&gt;.
+Go to the browser and verify the site.
+You can have many &lt;a href=&#34;http://gohugo.io/overview/quickstart/#step-7-have-fun&#34;&gt;options&lt;/a&gt;, with hugo to build the site as you want. Just play around with those options untill you have the site you want.&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-git:964c172ef5e837f03573891408d8d631&#34;&gt;Setup &amp;lsquo;git&amp;rsquo;&lt;/h2&gt;
+
+&lt;p&gt;Now that your site been setup locally as desired. You need to host it &lt;code&gt;live&lt;/code&gt;. We will use &lt;a href=&#34;https://pages.github.com/&#34;&gt;github pages&lt;/a&gt; for that.
+There are two option we have here to host with github pages:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  1:  User or Organization site (served from `master` branch)
+  2:  Project site (served from `gh-pages` branch)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We are going with option 1 here. So just follow the inst. in github pages i.e. setup repo with name &lt;code&gt;username&lt;/code&gt;.github.io.
+Here username should be your/org&amp;rsquo;s github username.
+Create two branches one master whuch will have the public folder contents (from the site generated with hugo).
+Other you can name anything and this will actually hold the source contents which will be used by hugo to create site for.&lt;/p&gt;
+
+&lt;p&gt;Now if you have read the hugo docs(which you should), you know that there will be a /public folder created by hugo and this contains actual contents of your site which will be hosted by github (if placed in master branch of repo). But since We are
+creating site with hugo we don&amp;rsquo;t  nedd to commit this. So use .gitignore file to ignore /public folder.&lt;/p&gt;
+
+&lt;p&gt;So at last we have a repo in git with two branches one master containing &lt;code&gt;/public&lt;/code&gt; folder contents and other branch(suppose source) containing source contents of hugo site. Now we just have to automated the things so that we don&amp;rsquo;t have to commit to the both branch each time we made a change to our site.&lt;/p&gt;
+
+&lt;h2 id=&#34;automation-with-wercker:964c172ef5e837f03573891408d8d631&#34;&gt;Automation with &lt;code&gt;wercker&lt;/code&gt;&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

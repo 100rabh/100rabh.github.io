@@ -6,185 +6,8 @@
     <description>Recent content on आरम्भ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Oct 2015 13:07:31 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2015 21:49:20 +0200</lastBuildDate>
     <atom:link href="http://100rabh.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Migrate from Jekyll</title>
-      <link>http://100rabh.github.io/2015/10/10/migrate-from-jekyll</link>
-      <pubDate>Sat, 10 Oct 2015 13:07:31 +0200</pubDate>
-      
-      <guid>http://100rabh.github.io/2015/10/10/migrate-from-jekyll</guid>
-      <description>
-
-&lt;h2 id=&#34;move-static-content-to-static:964c172ef5e837f03573891408d8d631&#34;&gt;Move static content to &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;Jekyll has a rule that any directory not starting with &lt;code&gt;_&lt;/code&gt; will be copied as-is to the &lt;code&gt;_site&lt;/code&gt; output. Hugo keeps all static content under &lt;code&gt;static&lt;/code&gt;. You should therefore move it all there.
-With Jekyll, something that looked like&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;▾ &amp;lt;root&amp;gt;/
-    ▾ images/
-        logo.png
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;should become&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;▾ &amp;lt;root&amp;gt;/
-    ▾ static/
-        ▾ images/
-            logo.png
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as &lt;code&gt;CNAME&lt;/code&gt;) to be moved to &lt;code&gt;static&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;create-your-hugo-configuration-file:964c172ef5e837f03573891408d8d631&#34;&gt;Create your Hugo configuration file&lt;/h2&gt;
-
-&lt;p&gt;Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the &lt;a href=&#34;http://100rabh.github.io/overview/configuration/&#34;&gt;Hugo configuration documentation&lt;/a&gt; for details.&lt;/p&gt;
-
-&lt;h2 id=&#34;set-your-configuration-publish-folder-to-site:964c172ef5e837f03573891408d8d631&#34;&gt;Set your configuration publish folder to &lt;code&gt;_site&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;The default is for Jekyll to publish to &lt;code&gt;_site&lt;/code&gt; and for Hugo to publish to &lt;code&gt;public&lt;/code&gt;. If, like me, you have &lt;a href=&#34;http://blog.blindgaenger.net/generate_github_pages_in_a_submodule.html&#34;&gt;&lt;code&gt;_site&lt;/code&gt; mapped to a git submodule on the &lt;code&gt;gh-pages&lt;/code&gt; branch&lt;/a&gt;, you&amp;rsquo;ll want to do one of two alternatives:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Change your submodule to point to map &lt;code&gt;gh-pages&lt;/code&gt; to public instead of &lt;code&gt;_site&lt;/code&gt; (recommended).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git submodule deinit _site
-git rm _site
-git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Or, change the Hugo configuration to use &lt;code&gt;_site&lt;/code&gt; instead of &lt;code&gt;public&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    ..
-    &amp;quot;publishdir&amp;quot;: &amp;quot;_site&amp;quot;,
-    ..
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;convert-jekyll-templates-to-hugo-templates:964c172ef5e837f03573891408d8d631&#34;&gt;Convert Jekyll templates to Hugo templates&lt;/h2&gt;
-
-&lt;p&gt;That&amp;rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to &lt;a href=&#34;http://jekyllrb.com/docs/templates/&#34;&gt;Jekyll&amp;rsquo;s template documentation&lt;/a&gt; if you need to refresh your memory on how you built your blog and &lt;a href=&#34;http://100rabh.github.io/layout/templates/&#34;&gt;Hugo&amp;rsquo;s template&lt;/a&gt; to learn Hugo&amp;rsquo;s way.&lt;/p&gt;
-
-&lt;p&gt;As a single reference data point, converting my templates for &lt;a href=&#34;http://heyitsalex.net/&#34;&gt;heyitsalex.net&lt;/a&gt; took me no more than a few hours.&lt;/p&gt;
-
-&lt;h2 id=&#34;convert-jekyll-plugins-to-hugo-shortcodes:964c172ef5e837f03573891408d8d631&#34;&gt;Convert Jekyll plugins to Hugo shortcodes&lt;/h2&gt;
-
-&lt;p&gt;Jekyll has &lt;a href=&#34;http://jekyllrb.com/docs/plugins/&#34;&gt;plugins&lt;/a&gt;; Hugo has &lt;a href=&#34;http://100rabh.github.io/doc/shortcodes/&#34;&gt;shortcodes&lt;/a&gt;. It&amp;rsquo;s fairly trivial to do a port.&lt;/p&gt;
-
-&lt;h3 id=&#34;implementation:964c172ef5e837f03573891408d8d631&#34;&gt;Implementation&lt;/h3&gt;
-
-&lt;p&gt;As an example, I was using a custom &lt;a href=&#34;https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb&#34;&gt;&lt;code&gt;image_tag&lt;/code&gt;&lt;/a&gt; plugin to generate figures with caption when running Jekyll. As I read about shortcodes, I found Hugo had a nice built-in shortcode that does exactly the same thing.&lt;/p&gt;
-
-&lt;p&gt;Jekyll&amp;rsquo;s plugin:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;module Jekyll
-  class ImageTag &amp;lt; Liquid::Tag
-    @url = nil
-    @caption = nil
-    @class = nil
-    @link = nil
-    // Patterns
-    IMAGE_URL_WITH_CLASS_AND_CAPTION =
-    IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK = /(\w+)(\s+)((https?:\/\/|\/)(\S+))(\s+)&amp;quot;(.*?)&amp;quot;(\s+)-&amp;gt;((https?:\/\/|\/)(\S+))(\s*)/i
-    IMAGE_URL_WITH_CAPTION = /((https?:\/\/|\/)(\S+))(\s+)&amp;quot;(.*?)&amp;quot;/i
-    IMAGE_URL_WITH_CLASS = /(\w+)(\s+)((https?:\/\/|\/)(\S+))/i
-    IMAGE_URL = /((https?:\/\/|\/)(\S+))/i
-    def initialize(tag_name, markup, tokens)
-      super
-      if markup =~ IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK
-        @class   = $1
-        @url     = $3
-        @caption = $7
-        @link = $9
-      elsif markup =~ IMAGE_URL_WITH_CLASS_AND_CAPTION
-        @class   = $1
-        @url     = $3
-        @caption = $7
-      elsif markup =~ IMAGE_URL_WITH_CAPTION
-        @url     = $1
-        @caption = $5
-      elsif markup =~ IMAGE_URL_WITH_CLASS
-        @class = $1
-        @url   = $3
-      elsif markup =~ IMAGE_URL
-        @url = $1
-      end
-    end
-    def render(context)
-      if @class
-        source = &amp;quot;&amp;lt;figure class=&#39;#{@class}&#39;&amp;gt;&amp;quot;
-      else
-        source = &amp;quot;&amp;lt;figure&amp;gt;&amp;quot;
-      end
-      if @link
-        source += &amp;quot;&amp;lt;a href=\&amp;quot;#{@link}\&amp;quot;&amp;gt;&amp;quot;
-      end
-      source += &amp;quot;&amp;lt;img src=\&amp;quot;#{@url}\&amp;quot;&amp;gt;&amp;quot;
-      if @link
-        source += &amp;quot;&amp;lt;/a&amp;gt;&amp;quot;
-      end
-      source += &amp;quot;&amp;lt;figcaption&amp;gt;#{@caption}&amp;lt;/figcaption&amp;gt;&amp;quot; if @caption
-      source += &amp;quot;&amp;lt;/figure&amp;gt;&amp;quot;
-      source
-    end
-  end
-end
-Liquid::Template.register_tag(&#39;image&#39;, Jekyll::ImageTag)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;is written as this Hugo shortcode:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;!-- image --&amp;gt;
-&amp;lt;figure {{ with .Get &amp;quot;class&amp;quot; }}class=&amp;quot;{{.}}&amp;quot;{{ end }}&amp;gt;
-    {{ with .Get &amp;quot;link&amp;quot;}}&amp;lt;a href=&amp;quot;{{.}}&amp;quot;&amp;gt;{{ end }}
-        &amp;lt;img src=&amp;quot;{{ .Get &amp;quot;src&amp;quot; }}&amp;quot; {{ if or (.Get &amp;quot;alt&amp;quot;) (.Get &amp;quot;caption&amp;quot;) }}alt=&amp;quot;{{ with .Get &amp;quot;alt&amp;quot;}}{{.}}{{else}}{{ .Get &amp;quot;caption&amp;quot; }}{{ end }}&amp;quot;{{ end }} /&amp;gt;
-    {{ if .Get &amp;quot;link&amp;quot;}}&amp;lt;/a&amp;gt;{{ end }}
-    {{ if or (or (.Get &amp;quot;title&amp;quot;) (.Get &amp;quot;caption&amp;quot;)) (.Get &amp;quot;attr&amp;quot;)}}
-    &amp;lt;figcaption&amp;gt;{{ if isset .Params &amp;quot;title&amp;quot; }}
-        {{ .Get &amp;quot;title&amp;quot; }}{{ end }}
-        {{ if or (.Get &amp;quot;caption&amp;quot;) (.Get &amp;quot;attr&amp;quot;)}}&amp;lt;p&amp;gt;
-        {{ .Get &amp;quot;caption&amp;quot; }}
-        {{ with .Get &amp;quot;attrlink&amp;quot;}}&amp;lt;a href=&amp;quot;{{.}}&amp;quot;&amp;gt; {{ end }}
-            {{ .Get &amp;quot;attr&amp;quot; }}
-        {{ if .Get &amp;quot;attrlink&amp;quot;}}&amp;lt;/a&amp;gt; {{ end }}
-        &amp;lt;/p&amp;gt; {{ end }}
-    &amp;lt;/figcaption&amp;gt;
-    {{ end }}
-&amp;lt;/figure&amp;gt;
-&amp;lt;!-- image --&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;usage:964c172ef5e837f03573891408d8d631&#34;&gt;Usage&lt;/h3&gt;
-
-&lt;p&gt;I simply changed:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{% image full http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg &amp;quot;One of my favorite touristy-type photos. I secretly waited for the good light while we were &amp;quot;having fun&amp;quot; and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing.&amp;quot; -&amp;gt;http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/ %}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;to this (this example uses a slightly extended version named &lt;code&gt;fig&lt;/code&gt;, different than the built-in &lt;code&gt;figure&lt;/code&gt;):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{{% fig class=&amp;quot;full&amp;quot; src=&amp;quot;http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg&amp;quot; title=&amp;quot;One of my favorite touristy-type photos. I secretly waited for the good light while we were having fun and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing.&amp;quot; link=&amp;quot;http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/&amp;quot; %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As a bonus, the shortcode named parameters are, arguably, more readable.&lt;/p&gt;
-
-&lt;h2 id=&#34;finishing-touches:964c172ef5e837f03573891408d8d631&#34;&gt;Finishing touches&lt;/h2&gt;
-
-&lt;h3 id=&#34;fix-content:964c172ef5e837f03573891408d8d631&#34;&gt;Fix content&lt;/h3&gt;
-
-&lt;p&gt;Depending on the amount of customization that was done with each post with Jekyll, this step will require more or less effort. There are no hard and fast rules here except that &lt;code&gt;hugo server --watch&lt;/code&gt; is your friend. Test your changes and fix errors as needed.&lt;/p&gt;
-
-&lt;h3 id=&#34;clean-up:964c172ef5e837f03573891408d8d631&#34;&gt;Clean up&lt;/h3&gt;
-
-&lt;p&gt;You&amp;rsquo;ll want to remove the Jekyll configuration at this point. If you have anything else that isn&amp;rsquo;t used, delete it.&lt;/p&gt;
-
-&lt;h2 id=&#34;a-practical-example-in-a-diff:964c172ef5e837f03573891408d8d631&#34;&gt;A practical example in a diff&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://heyitsalex.net/&#34;&gt;Hey, it&amp;rsquo;s Alex&lt;/a&gt; was migrated in less than a &lt;em&gt;father-with-kids day&lt;/em&gt; from Jekyll to Hugo. You can see all the changes (and screw-ups) by looking at this &lt;a href=&#34;https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610&#34;&gt;diff&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Linked post</title>
@@ -579,7 +402,7 @@ you are reading right now.&lt;/p&gt;
 &lt;li&gt;Clone the &lt;a href=&#34;http://github.com/spf13/hugo&#34;&gt;hugo repository&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Go into the repo&lt;/li&gt;
 &lt;li&gt;Run hugo in server mode and build the docs&lt;/li&gt;
-&lt;li&gt;Open your browser to &lt;a href=&#34;http://100rabh.github.io&#34;&gt;http://100rabh.github.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Open your browser to &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Corresponding pseudo commands:&lt;/p&gt;
@@ -590,7 +413,7 @@ cd hugo
 &amp;gt; 29 pages created
 &amp;gt; 0 tags index created
 &amp;gt; in 27 ms
-&amp;gt; Web Server is available at http://100rabh.github.io
+&amp;gt; Web Server is available at http://localhost:1313
 &amp;gt; Press ctrl+c to stop
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -606,7 +429,7 @@ cd hugo
 &amp;gt; 29 pages created
 &amp;gt; 0 tags index created
 &amp;gt; in 27 ms
-&amp;gt; Web Server is available at http://100rabh.github.io
+&amp;gt; Web Server is available at http://localhost:1313
 &amp;gt; Watching for changes in /Users/spf13/Code/hugo/docs/content
 &amp;gt; Press ctrl+c to stop
 &lt;/code&gt;&lt;/pre&gt;
@@ -831,7 +654,7 @@ WARN: 2014/09/29 Unable to locate layout: [404.html]
 0 categories created
 in 2 ms
 Serving pages from /Users/quoha/Sites/zafta/public
-Web Server is available at http://100rabh.github.io
+Web Server is available at http://localhost:1313
 Press Ctrl+C to stop
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1074,7 +897,7 @@ WARN: 2014/09/29 Unable to locate layout: [404.html theme/404.html]
 in 2 ms
 Watching for changes in /Users/quoha/Sites/zafta/content
 Serving pages from /Users/quoha/Sites/zafta/public
-Web Server is available at http://100rabh.github.io
+Web Server is available at http://localhost:1313
 Press Ctrl+C to stop
 INFO: 2014/09/29 File System Event: [&amp;quot;/Users/quoha/Sites/zafta/themes/zafta/layouts/index.html&amp;quot;: MODIFY|ATTRIB]
 Change detected, rebuilding site
@@ -1151,7 +974,7 @@ $ cat public/index.html
 &amp;lt;body&amp;gt;
   &amp;lt;p&amp;gt;hugo says hello!&amp;lt;/p&amp;gt;
 &amp;lt;script&amp;gt;document.write(&#39;&amp;lt;script src=&amp;quot;http://&#39;
-        + (location.host || &#39;100rabh.github.io&#39;).split(&#39;:&#39;)[0]
+        + (location.host || &#39;localhost&#39;).split(&#39;:&#39;)[0]
     + &#39;:1313/livereload.js?mindelay=10&amp;quot;&amp;gt;&amp;lt;/&#39;
         + &#39;script&amp;gt;&#39;)&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
@@ -1434,7 +1257,7 @@ $ cat public/post/second/index.html
 $
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Notice that the posts now have content. You can go to 100rabh.github.io/post/first to verify.&lt;/p&gt;
+&lt;p&gt;Notice that the posts now have content. You can go to localhost:1313/post/first to verify.&lt;/p&gt;
 
 &lt;h3 id=&#34;linking-to-content:203afb8fdc074e80a6a8cddc7dc8ce70&#34;&gt;Linking to Content&lt;/h3&gt;
 
@@ -1538,13 +1361,13 @@ i&#39;m speechless
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/post/theme/&amp;quot;&amp;gt;creating a new theme&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/about-time/&amp;quot;&amp;gt;about&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/post/second-post/&amp;quot;&amp;gt;second&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
-    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://100rabh.github.io/post/first-post/&amp;quot;&amp;gt;first&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/post/theme/&amp;quot;&amp;gt;creating a new theme&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/about-time/&amp;quot;&amp;gt;about&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/post/second-post/&amp;quot;&amp;gt;second&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;&amp;lt;a href=&amp;quot;http://localhost:1313/post/first-post/&amp;quot;&amp;gt;first&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
 &amp;lt;script&amp;gt;document.write(&#39;&amp;lt;script src=&amp;quot;http://&#39;
-        + (location.host || &#39;100rabh.github.io&#39;).split(&#39;:&#39;)[0]
-        + &#39;:1313/livereload.js?mindelay=10&amp;quot;&amp;gt;&amp;lt;/&#39;
+        + (location.host || &#39;localhost&#39;).split(&#39;:&#39;)[0]
+		+ &#39;:1313/livereload.js?mindelay=10&amp;quot;&amp;gt;&amp;lt;/&#39;
         + &#39;script&amp;gt;&#39;)&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -1589,8 +1412,8 @@ i&#39;m speechless
 
 &lt;pre&gt;&lt;code&gt;$ vi config.toml
 [permalinks]
-    page = &amp;quot;/:title/&amp;quot;
-    about = &amp;quot;/:filename/&amp;quot;
+	page = &amp;quot;/:title/&amp;quot;
+	about = &amp;quot;/:filename/&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Generate the web site and verify that this didn&amp;rsquo;t work. Hugo lets &amp;ldquo;slug&amp;rdquo; or &amp;ldquo;URL&amp;rdquo; override the permalinks setting in the configuration file. Go ahead and comment out the slug in content/about.md, then generate the web site to get it to be created in the right place.&lt;/p&gt;
@@ -1609,7 +1432,7 @@ i&#39;m speechless
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;{{ .Title }}&amp;lt;/title&amp;gt;
+	&amp;lt;title&amp;gt;{{ .Title }}&amp;lt;/title&amp;gt;
 &amp;lt;/head&amp;gt;
 &amp;lt;body&amp;gt;
 :wq
@@ -1737,6 +1560,73 @@ $ vi themes/zafta/layouts/_default/single.html
 &lt;h3 id=&#34;don-t-repeat-yourself:203afb8fdc074e80a6a8cddc7dc8ce70&#34;&gt;Don&amp;rsquo;t Repeat Yourself&lt;/h3&gt;
 
 &lt;p&gt;DRY is a good design goal and Hugo does a great job supporting it. Part of the art of a good template is knowing when to add a new template and when to update an existing one. While you&amp;rsquo;re figuring that out, accept that you&amp;rsquo;ll be doing some refactoring. Hugo makes that easy and fast, so it&amp;rsquo;s okay to delay splitting up a template.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to host a static website/blog with Hugo, Github Pages and Wercker</title>
+      <link>http://100rabh.github.io/2015/02/02/how-to-host-a-static-website/blog-with-hugo-github-pages-and-wercker</link>
+      <pubDate>Mon, 02 Feb 2015 13:07:31 +0200</pubDate>
+      
+      <guid>http://100rabh.github.io/2015/02/02/how-to-host-a-static-website/blog-with-hugo-github-pages-and-wercker</guid>
+      <description>
+
+&lt;h2 id=&#34;what-s-up-with-hugo:964c172ef5e837f03573891408d8d631&#34;&gt;What&amp;rsquo;s up with &lt;code&gt;HUGO&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Hugo is a static site generator. Sites generated with Hugo tends to be &lt;a href=&#34;https://youtu.be/CdiDYZ51a2o&#34;&gt;fast&lt;/a&gt;, easy to host on different providers like AWS, GitHub Pages, Google Cloud etc. Visit official Hugo wesite for &lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;more&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-a-static-site-with-hugo:964c172ef5e837f03573891408d8d631&#34;&gt;Create a static site with Hugo&lt;/h2&gt;
+
+&lt;p&gt;First of all you need to have hugo installed in your working Env. Basically you may want to refer &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;Hugo Installation documentation&lt;/a&gt; for details. Which is pretty much straightforward.
+After that follow these commands to create site with hugo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ hugo new site path/to/site
+  $ cd path/to/site
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The new site will have the following structure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  ▸ archetypes/
+  ▸ content/
+  ▸ data/
+  ▸ layouts/
+  ▸ static/
+  config.toml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you have static site without any theme. If you want to have one you are in the right place Hugo has rich &lt;a href=&#34;https://gohugo.io/themes/overview/&#34;&gt;theme&lt;/a&gt; support.&lt;/p&gt;
+
+&lt;h2 id=&#34;run-your-site-with-hugo-server:964c172ef5e837f03573891408d8d631&#34;&gt;Run your site with Hugo server&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;   $ hugo server
+   OR If on windows use:
+   $ hugo server --renderToDisk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;On console you will see a message like: &lt;code&gt;Web Server is available at http://localhost:1313&lt;/code&gt;.
+Go to the browser and verify the site.
+You can have many &lt;a href=&#34;http://gohugo.io/overview/quickstart/#step-7-have-fun&#34;&gt;options&lt;/a&gt;, with hugo to build the site as you want. Just play around with those options untill you have the site you want.&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-git:964c172ef5e837f03573891408d8d631&#34;&gt;Setup &amp;lsquo;git&amp;rsquo;&lt;/h2&gt;
+
+&lt;p&gt;Now that your site been setup locally as desired. You need to host it &lt;code&gt;live&lt;/code&gt;. We will use &lt;a href=&#34;https://pages.github.com/&#34;&gt;github pages&lt;/a&gt; for that.
+There are two option we have here to host with github pages:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  1:  User or Organization site (served from `master` branch)
+  2:  Project site (served from `gh-pages` branch)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We are going with option 1 here. So just follow the inst. in github pages i.e. setup repo with name &lt;code&gt;username&lt;/code&gt;.github.io.
+Here username should be your/org&amp;rsquo;s github username.
+Create two branches one master whuch will have the public folder contents (from the site generated with hugo).
+Other you can name anything and this will actually hold the source contents which will be used by hugo to create site for.&lt;/p&gt;
+
+&lt;p&gt;Now if you have read the hugo docs(which you should), you know that there will be a /public folder created by hugo and this contains actual contents of your site which will be hosted by github (if placed in master branch of repo). But since We are
+creating site with hugo we don&amp;rsquo;t  nedd to commit this. So use .gitignore file to ignore /public folder.&lt;/p&gt;
+
+&lt;p&gt;So at last we have a repo in git with two branches one master containing &lt;code&gt;/public&lt;/code&gt; folder contents and other branch(suppose source) containing source contents of hugo site. Now we just have to automated the things so that we don&amp;rsquo;t have to commit to the both branch each time we made a change to our site.&lt;/p&gt;
+
+&lt;h2 id=&#34;automation-with-wercker:964c172ef5e837f03573891408d8d631&#34;&gt;Automation with &lt;code&gt;wercker&lt;/code&gt;&lt;/h2&gt;
 </description>
     </item>
     
@@ -1925,7 +1815,7 @@ menu = &amp;quot;main&amp;quot;
 &lt;pre&gt;&lt;code&gt;$ hugo server
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now enter &lt;a href=&#34;http://100rabh.github.io&#34;&gt;&lt;code&gt;100rabh.github.io&lt;/code&gt;&lt;/a&gt; in the address bar of your browser.&lt;/p&gt;
+&lt;p&gt;Now enter &lt;a href=&#34;http://localhost:1313&#34;&gt;&lt;code&gt;localhost:1313&lt;/code&gt;&lt;/a&gt; in the address bar of your browser.&lt;/p&gt;
 
 &lt;h2 id=&#34;contributing:33ea911532f0c95309659f2412cd62cb&#34;&gt;Contributing&lt;/h2&gt;
 

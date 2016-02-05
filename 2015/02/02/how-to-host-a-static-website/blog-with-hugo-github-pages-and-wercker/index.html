@@ -42,7 +42,7 @@
 
 
 <meta itemprop="dateModified" content="2015-02-02T13:07:31&#43;02:00" />
-<meta itemprop="wordCount" content="792">
+<meta itemprop="wordCount" content="803">
 
 
 
@@ -265,7 +265,7 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2015-02-02 13:07:31 &#43;0200 &#43;0200" itemprop="datePublished">2015-02-02</time>
             &middot;
-            792
+            803
             words
             &middot;
             4
@@ -313,11 +313,11 @@
             <div class="article-entry" itemprop="articleBody">
                 
 
-<h2 id="what-s-up-with-hugo:964c172ef5e837f03573891408d8d631">What&rsquo;s up with <code>HUGO</code></h2>
+<h2 id="what-s-up-with-hugo:941c0e6bd0cfdf02adc51f1d06906442">What&rsquo;s up with <code>HUGO</code></h2>
 
 <p>Hugo is a static site generator. Sites generated with Hugo tends to be <a href="https://youtu.be/CdiDYZ51a2o">fast</a>, easy to host on different providers like AWS, GitHub Pages, Google Cloud etc. Visit official Hugo wesite for <a href="https://gohugo.io/overview/introduction/">more</a>.</p>
 
-<h2 id="create-a-static-site-with-hugo:964c172ef5e837f03573891408d8d631">Create a static site with Hugo</h2>
+<h2 id="create-a-static-site-with-hugo:941c0e6bd0cfdf02adc51f1d06906442">Create a static site with Hugo</h2>
 
 <p>First of all you need to have hugo installed in your working Env. Basically you may want to refer <a href="https://gohugo.io/overview/installing/">Hugo Installation documentation</a> for details. Which is pretty much straightforward.
 After that follow these commands to create site with hugo:</p>
@@ -338,7 +338,7 @@ After that follow these commands to create site with hugo:</p>
 
 <p>Now you have static site without any theme. If you want to have one you are in the right place Hugo has rich <a href="https://gohugo.io/themes/overview/">theme</a> support.</p>
 
-<h2 id="run-your-site-with-hugo-server:964c172ef5e837f03573891408d8d631">Run your site with Hugo server</h2>
+<h2 id="run-your-site-with-hugo-server:941c0e6bd0cfdf02adc51f1d06906442">Run your site with Hugo server</h2>
 
 <pre><code>   $ hugo server
    OR If on windows use:
@@ -349,7 +349,7 @@ After that follow these commands to create site with hugo:</p>
 Go to the browser and verify the site.
 You can have many <a href="http://gohugo.io/overview/quickstart/#step-7-have-fun">options</a>, with hugo to build the site as you want. Just play around with those options untill you have the site you want.</p>
 
-<h2 id="setup-git:964c172ef5e837f03573891408d8d631">Setup &lsquo;git&rsquo;</h2>
+<h2 id="setup-git:941c0e6bd0cfdf02adc51f1d06906442">Setup &lsquo;git&rsquo;</h2>
 
 <p>Now that your site been setup locally as desired. You need to host it <code>live</code>. We will use <a href="https://pages.github.com/">github pages</a> for that.
 There are two option we have here to host with github pages:</p>
@@ -372,7 +372,7 @@ creating site with hugo we don&rsquo;t  nedd to commit this. So use .gitignore f
 If all setup good, you will be able to see your site at http://<username>.github.io/
 Now we just have to automated the things so that we don&rsquo;t have to commit to the both branch each time we made a change to our site.</p>
 
-<h2 id="automation-with-wercker:964c172ef5e837f03573891408d8d631">Automation with <code>wercker</code></h2>
+<h2 id="automation-with-wercker:941c0e6bd0cfdf02adc51f1d06906442">Automation with <code>wercker</code></h2>
 
 <p>Up to now you have a site hosted from github pages.
 Repo on github with branches master and source.
@@ -428,9 +428,56 @@ But before that just push wercker.yml file with following code in <code>source</
 <p>Now got to make some change to your local hugo site/repo and push those changes to source branch.
 You will see your wercker building your changes from source and pushing them to master so that you can see them LIVE !!</p>
 
+<h3 id="sos-screenshots:941c0e6bd0cfdf02adc51f1d06906442">SOS screenshots</h3>
+
+<p>Following screenshots will help you to understand automation process.
+<p></p>
+<div class="article-gallery">
+    <div class="article-gallery-photos">
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/Git%20Branches.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/Git%20Branches.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/gitTocken.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/gitTocken.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/PA-token.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/PA-token.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/wercker-app-setting.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/wercker-app-setting.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/wercker-ignored.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/wercker-ignored.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/wercker-git.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/wercker-git.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/wercker-config.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/wercker-config.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/wercker-customTarget.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/wercker-customTarget.jpg" itemprop="image">
+        </a>
+        
+        <a class="article-gallery-img fancybox" href="http://100rabh.github.io/gal/hugo-wercker/wercker-target.jpg" rel="group1">
+            <img src="http://100rabh.github.io/gal/hugo-wercker/wercker-target.jpg" itemprop="image">
+        </a>
+        
+    </div>
+</div>
+</p>
+
             </div>
             <footer class="article-footer">
-    <a data-url="http://100rabh.github.io/2015/02/02/how-to-host-a-static-website/blog-with-hugo-github-pages-and-wercker" data-id="964c172ef5e837f03573891408d8d631" class="article-share-link">
+    <a data-url="http://100rabh.github.io/2015/02/02/how-to-host-a-static-website/blog-with-hugo-github-pages-and-wercker" data-id="941c0e6bd0cfdf02adc51f1d06906442" class="article-share-link">
         Share
     </a>
     

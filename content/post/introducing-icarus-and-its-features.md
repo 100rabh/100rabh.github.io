@@ -36,7 +36,7 @@ In the next step navigate to the `exampleSite` folder at `themes/hugo-icarus-the
     │       ├── hugo-is-for-lovers.md
     │       ├── introducing-icarus-and-its-features.md
     │       ├── linked-post.md
-    │       └── migrate-from-jekyll.md
+    │       └── hugo-gitpages-wercker.md
     ├── data
     │   └── l10n.toml
     └── static

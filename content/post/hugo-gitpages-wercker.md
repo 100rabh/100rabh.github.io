@@ -108,3 +108,9 @@ Now since wercker build step is GREEN, We will try to make it deploy to master b
 
 Now got to make some change to your local hugo site/repo and push those changes to source branch.
 You will see your wercker building your changes from source and pushing them to master so that you can see them LIVE !!
+
+### SOS screenshots
+
+Following screenshots will help you to understand automation process.
+<p></p>
+{{< gallery "/gal/hugo-wercker/Git Branches.jpg" "/gal/hugo-wercker/gitTocken.jpg" "/gal/hugo-wercker/PA-token.jpg" "/gal/hugo-wercker/wercker-app-setting.jpg" "/gal/hugo-wercker/wercker-ignored.jpg" "/gal/hugo-wercker/wercker-git.jpg" "/gal/hugo-wercker/wercker-config.jpg" "/gal/hugo-wercker/wercker-customTarget.jpg" "/gal/hugo-wercker/wercker-target.jpg" >}}

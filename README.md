@@ -1,2 +1,2 @@
 # saurabh
-Repo for my personal blog.
+Create blog site with Hugo.
